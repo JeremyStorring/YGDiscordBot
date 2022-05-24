@@ -1,0 +1,3 @@
+TOKEN=NzUxOTUwOTk0MTE1Mzk1NjU0.GRnBSb.xrZxhkNriJ4CS7PUFAfQIVZv0M3oW-yY7R1Klo
+MEMBER_KICK_TEXT=You have been kicked from Yummy Goodies due to being unverified for too long. You are welcome to join back https://discord.gg/WrBVQUS, but you must verify ASAP if you rejoin. Please type $agree in #landing or #general-chat upon rejoining.
+MEMBER_PING_TEXT=You currently have the 'Unverified' role. To remain in the server, you must verify yourself. Please visit <#708672518193414165> for details on verification. This is your final warning before being kicked. You may rejoin if you are kicked.
