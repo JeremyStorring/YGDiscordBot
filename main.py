@@ -1,4 +1,4 @@
-import load
+import load, models.database
 import discord
 from discord.ext import commands
 
@@ -41,6 +41,18 @@ async def on_ready():
 
     # await bot.change_presence(game=discord.Game(name='Cogs Example', type=1, url='https://twitch.tv/kraken'))
     print(f'Successfully logged in and booted...!')
+
+@bot.event
+async def on_member_join(member: discord.Member):
+    if models.database.queryExistingUser(member):
+        channel = bot.get_channel(752234677749678171)
+        userData = models.database.getExistingUserData(member)
+        await channel.send(f"<@{member.id}> has rejoined the server. They have been here {userData['timesJoined']} "
+                           f"times, kicked {userData['timesKicked']} times, banned {userData['timesBanned']} times, "
+                           f"and here are their notes {userData['userNotes']}")
+    else:
+        await models.database.insert_new_user(member)
+    return
 
 bot.run(configData['TOKEN'], bot=True, reconnect=True)
 

@@ -1,4 +1,4 @@
-import discord, load
+import discord, load, models.database
 from discord.ext import commands
 import helperFunctions
 
@@ -9,6 +9,18 @@ memberPingText = load.loadConfigData()["MEMBER_PING_TEXT"]
 class ModerationCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.command()
+    async def addUser(self, ctx, member: discord.Member):
+        print(models.database.insert_new_user(member))
+
+    @commands.command()
+    async def checkUser(self, ctx, member: discord.Member):
+        print(models.database.queryExistingUser(member))
+
+    @commands.command()
+    async def addNotes(self, ctx, member:discord.Member):
+        print(models.database.addNoteToUser(member, ctx))
 
     @commands.command(hidden=True)
     @commands.has_any_role('Admin', 'Owner', 'Moderator')
